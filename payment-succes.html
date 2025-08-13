@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement réussi - StreamVision</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="payment-container">
+        <div class="payment-card success">
+            <div class="payment-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h1>Paiement réussi !</h1>
+            <p>Merci pour votre abonnement à StreamVision Premium.</p>
+            <p>Votre accès aux contenus exclusifs est maintenant activé.</p>
+            <a href="index.html" class="btn-primary">Accéder au catalogue</a>
+        </div>
+    </div>
+
+    <script>
+        // Vérifier le statut de la session Stripe
+        async function checkSessionStatus() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const sessionId = urlParams.get('session_id');
+            
+            if (sessionId) {
+                try {
+                    const response = await fetch(`/api/payment/session-status?session_id=${sessionId}`);
+                    const session = await response.json();
+                    
+                    if (session.status === 'complete') {
+                        // Mettre à jour le statut de l'utilisateur
+                        const token = localStorage.getItem('token');
+                        if (token) {
+                            const userResponse = await fetch('/api/auth/verify', {
+                                headers: { Authorization: token }
+                            });
+                            
+                            const userData = await userResponse.json();
+                            if (userResponse.ok) {
+                                localStorage.setItem('user', JSON.stringify(userData.user));
+                            }
+                        }
+                    }
+                } catch (err) {
+                    console.error('Erreur:', err);
+                }
+            }
+        }
+        
+        checkSessionStatus();
+    </script>
+</body>
+</html>

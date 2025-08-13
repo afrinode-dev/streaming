@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - StreamVision</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-form">
+            <h1><i class="fas fa-film"></i> StreamVision</h1>
+            <h2>Créer un compte</h2>
+            
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="register-username">Nom d'utilisateur</label>
+                    <input type="text" id="register-username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-password">Mot de passe</label>
+                    <input type="password" id="register-password" required>
+                    <i class="fas fa-eye toggle-password" onclick="togglePassword('register-password')"></i>
+                    <div class="password-strength">
+                        <span id="strength-text">Force du mot de passe : faible</span>
+                        <div class="strength-meter">
+                            <span class="strength-bar weak"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="register-confirm">Confirmer le mot de passe</label>
+                    <input type="password" id="register-confirm" required>
+                </div>
+                
+                <div class="form-group checkbox">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">J'accepte les <a href="#">conditions d'utilisation</a></label>
+                </div>
+                
+                <button type="submit" class="btn-primary">S'inscrire</button>
+            </form>
+            
+            <p class="auth-link">
+                Déjà un compte ? <a href="login.html">Se connecter</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>

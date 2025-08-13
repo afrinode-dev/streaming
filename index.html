@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamVision - Accueil</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+    </div>
+    
+    <header>
+        <div class="logo">StreamVision</div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> Accueil</a></li>
+                <li><a href="catalogue.html"><i class="fas fa-film"></i> Catalogue</a></li>
+                <li><a href="favorites.html"><i class="fas fa-heart"></i> Favoris</a></li>
+                <li class="search-container">
+                    <input type="text" id="search-input" placeholder="Rechercher...">
+                    <button id="search-btn"><i class="fas fa-search"></i></button>
+                </li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <a href="login.html" id="login-btn">Connexion</a>
+            <a href="profile.html" id="profile-btn" style="display:none;"><i class="fas fa-user"></i></a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Films & Séries en illimité</h1>
+                <p>Abonnez-vous dès maintenant pour seulement 5,99€/mois</p>
+                <a href="subscribe.html" class="btn-primary">S'abonner</a>
+            </div>
+        </section>
+
+        <section class="categories">
+            <h2>Catégories</h2>
+            <div class="category-list">
+                <button class="category-btn active" data-category="all">Tous</button>
+                <button class="category-btn" data-category="action">Action</button>
+                <button class="category-btn" data-category="comedy">Comédie</button>
+                <button class="category-btn" data-category="drama">Drame</button>
+                <button class="category-btn" data-category="sci-fi">Science-Fiction</button>
+            </div>
+        </section>
+
+        <section class="video-grid">
+            <h2>Nouveautés</h2>
+            <div class="videos-container" id="videos-container">
+                <!-- Les vidéos seront chargées ici via JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>StreamVision</h3>
+                <p>Le meilleur du streaming en France</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liens utiles</h3>
+                <ul>
+                    <li><a href="#">Conditions d'utilisation</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                    <li><a href="#">Nous contacter</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Réseaux sociaux</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 StreamVision. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <div class="video-player" id="video-player" style="display: none;">
+        <div class="player-container">
+            <div class="player-header">
+                <h2 id="video-title"></h2>
+                <button id="close-player"><i class="fas fa-times"></i></button>
+            </div>
+            <video id="main-video" controls>
+                <source src="" type="video/mp4">
+                Votre navigateur ne supporte pas la lecture de vidéos.
+            </video>
+            <div class="video-info">
+                <p id="video-description"></p>
+                <div class="video-actions">
+                    <button id="like-btn"><i class="far fa-heart"></i> Ajouter aux favoris</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

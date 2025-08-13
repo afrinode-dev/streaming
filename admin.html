@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - StreamVision</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>StreamVision <span class="admin-badge">Admin</span></h1>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="#" onclick="logout()">Déconnexion</a>
+        </nav>
+    </header>
+
+    <main class="admin-main">
+        <div class="admin-sidebar">
+            <ul>
+                <li class="active"><a href="#" data-section="upload"><i class="fas fa-upload"></i> Upload Vidéo</a></li>
+                <li><a href="#" data-section="videos"><i class="fas fa-film"></i> Gérer Vidéos</a></li>
+                <li><a href="#" data-section="users"><i class="fas fa-users"></i> Gérer Utilisateurs</a></li>
+                <li><a href="#" data-section="stats"><i class="fas fa-chart-bar"></i> Statistiques</a></li>
+            </ul>
+        </div>
+
+        <div class="admin-content">
+            <!-- Section Upload -->
+            <section id="upload-section" class="admin-section active">
+                <h2><i class="fas fa-upload"></i> Uploader une vidéo</h2>
+                <form id="upload-form" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="video-title">Titre</label>
+                        <input type="text" id="video-title" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="video-description">Description</label>
+                        <textarea id="video-description" rows="4" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="video-category">Catégorie</label>
+                        <select id="video-category" required>
+                            <option value="action">Action</option>
+                            <option value="comedy">Comédie</option>
+                            <option value="drama">Drame</option>
+                            <option value="sci-fi">Science-Fiction</option>
+                            <option value="horror">Horreur</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="video-thumbnail">Miniature</label>
+                        <input type="file" id="video-thumbnail" accept="image/*">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="video-file">Fichier vidéo</label>
+                        <input type="file" id="video-file" accept="video/*" required>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-cloud-upload-alt"></i> Uploader
+                    </button>
+                </form>
+            </section>
+
+            <!-- Section Gérer Vidéos -->
+            <section id="videos-section" class="admin-section">
+                <h2><i class="fas fa-film"></i> Gérer les vidéos</h2>
+                <div class="search-container">
+                    <input type="text" id="admin-video-search" placeholder="Rechercher une vidéo...">
+                    <button id="admin-search-video"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="admin-table-container">
+                    <table id="videos-table">
+                        <thead>
+                            <tr>
+                                <th>Titre</th>
+                                <th>Catégorie</th>
+                                <th>Date</th>
+                                <th>Vues</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Les vidéos seront chargées ici -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section Gérer Utilisateurs -->
+            <section id="users-section" class="admin-section">
+                <h2><i class="fas fa-users"></i> Gérer les utilisateurs</h2>
+                <div class="admin-table-container">
+                    <table id="users-table">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Email</th>
+                                <th>Rôle</th>
+                                <th>Inscrit le</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Les utilisateurs seront chargées ici -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section Statistiques -->
+            <section id="stats-section" class="admin-section">
+                <h2><i class="fas fa-chart-bar"></i> Statistiques</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Utilisateurs</h3>
+                        <p id="total-users">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Vidéos</h3>
+                        <p id="total-videos">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Vues totales</h3>
+                        <p id="total-views">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Abonnés</h3>
+                        <p id="total-subscribers">0</p>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="views-chart"></canvas>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
